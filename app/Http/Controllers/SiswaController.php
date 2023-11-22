@@ -45,4 +45,6 @@ class SiswaController extends Controller
                                 ->withErrors(['error' => 'NISN sudah tersedia.']);
         }
     }   
+
+
 }

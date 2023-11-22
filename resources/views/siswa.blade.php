@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title','Rekap Absen')
+@section('title','Tambah Siswa')
 
 @section('body')
 
@@ -16,9 +16,9 @@
                 <label for="noUpDown" class="text-xl"> NISN </label>
                 <input type="number" name="NISN" id="noUpDown" required autocomplete="off" class="text-sm appearance-none focus:outline-none h-10 px-2 rounded-md bg-[#D9D9D9]" value="{{ old('NISN') }}">
                 @if($errors->has('error'))
-                <div class="text-red-600 text-xs font-extralight font-poppins">
-                    {{ $errors->first('error') }}
-                </div>
+                    <div class="text-red-600 ml-[0.13rem] text-xs font-extralight font-poppins">
+                        {{ $errors->first('error') }}
+                    </div>
                 @endif
             </div>
             <div class="flex items-center mt-5"> 

@@ -11,8 +11,24 @@ class AbsensiController extends Controller
     public function index(){
         $absensi = Absensi::with('siswa')
                 ->whereDate('tanggal_absen', now())
-                ->get();;
-        return view('absensi', ['absensi' => $absensi]);
+                ->get();
+        $data = [];
+        
+        foreach ($absensi as $absen) {
+            $data[] = [
+                'id' => $absen->id,
+                'nama_siswa' => $absen->siswa->nama_siswa,
+                'nisn' => $absen->siswa->NISN,
+                'jenis_kelamin' => $absen->siswa->jenis_kelamin,
+                'status' => $absen->status
+            ];
+        }
+
+        usort($data, function ($a, $b) {
+            return $a['nisn'] - $b['nisn'];
+        });
+
+        return view('absensi', ['data' => $data]);
     }
 
 
@@ -56,8 +72,11 @@ class AbsensiController extends Controller
             $result[$nisn][$status] += $data->count;
         }
     
+        usort($result, function ($a, $b) {
+            return strcmp(strtolower($a['nama_siswa']), strtolower($b['nama_siswa']));
+        });
         // Ubah array associatif menjadi array indeks
-        $result = array_values($result);
+        // $result = array_values($result);
     
         // Tampilkan halaman rekap absen per bulan dengan data yang telah diambil
         return view('partialrekap', compact('result'))->render();
@@ -95,7 +114,10 @@ class AbsensiController extends Controller
         }
     
         // Ubah array associatif menjadi array indeks
-         $result = array_values($result);
+        usort($result, function ($a, $b) {
+            return strcmp(strtolower($a['nama_siswa']), strtolower($b['nama_siswa']));
+        });
+        //  $result = array_values($result);
 
         // Tampilkan halaman rekap absen per bulan dengan data yang telah diambil
         return view('rekap', compact('result'));
@@ -111,7 +133,23 @@ class AbsensiController extends Controller
             ->whereDate('tanggal_absen', $tanggal)
             ->get();
 
-        $html = view('partialabsensi', compact('absensi'))->render();
+        $data = [];
+        
+        foreach ($absensi as $absen) {
+            $data[] = [
+                'id' => $absen->id,
+                'nama_siswa' => $absen->siswa->nama_siswa,
+                'nisn' => $absen->siswa->NISN,
+                'jenis_kelamin' => $absen->siswa->jenis_kelamin,
+                'status' => $absen->status
+            ];
+        }
+
+        usort($data, function ($a, $b) {
+            return $a['nisn'] - $b['nisn'];
+        });
+        
+        $html = view('partialabsensi', compact('data'))->render();
         return response()->json(['html' => $html]);
     }
 

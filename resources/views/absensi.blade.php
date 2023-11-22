@@ -2,7 +2,7 @@
 
 @section('title','Absensi')
 @section('body')
-    <div class=" h-[83vh] w-screen overflow-hidden">
+    <div class=" h-full w-screen overflow-hidden">
 
         <div class=" clear-both mt-[25px] h-[50px]">
             <div class=" float-left ml-[7.4vw]">
@@ -14,7 +14,7 @@
                 <input type="date" id="inputTanggal" name="inputTanggal" class=" pl-[0.5vw] border-[0.1vh] border-black" required value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
             </div>
         </div>
-        <div class=" w-[85%] h-[650px]  mx-auto overflow-scroll">
+        <div class=" w-[85%] h-[60vh] mt-[3vh]  mx-auto overflow-scroll">
             <table class="w-full text-center">
                 <thead class=" text-[20px] bg-[#C6E9DC] sticky top-0">
                     <tr class="border border-black h-[6vh]">

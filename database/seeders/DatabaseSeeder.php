@@ -28,12 +28,41 @@ class DatabaseSeeder extends Seeder
         //     'username' => 'absensi', 
         //     'password' => bcrypt('absensi')
         // ]);
-        $siswa = Siswa::create([
-            'nama_siswa' => 'Akhsania', 
+        $siswa1 = Siswa::create([
+            'nama_siswa' => 'Glenn Hakim', 
+            'NISN' => '2208107010072', 
+            'tanggal_lahir' => '2004-07-26', 
+            'jenis_kelamin' => 'laki-laki'
+        ]);
+        $siswa2 = Siswa::create([
+            'nama_siswa' => 'farhanul khair', 
+            'NISN' => '2208107010076', 
+            'tanggal_lahir' => '2004-09-19', 
+            'jenis_kelamin' => 'laki-laki'
+        ]);
+        $siswa3 = Siswa::create([
+            'nama_siswa' => 'alfi zamriza', 
+            'NISN' => '2208107010085', 
+            'tanggal_lahir' => '2003-10-11', 
+            'jenis_kelamin' => 'laki-laki'
+        ]);
+        $siswa4 = Siswa::create([
+            'nama_siswa' => 'akhsania', 
             'NISN' => '2208107010050', 
-            'tanggal_lahir' => '2003-04-30', 
+            'tanggal_lahir' => '2004-04-21', 
             'jenis_kelamin' => 'perempuan'
         ]);
-        event(new SiswaCreated($siswa));
+        $siswa5 = Siswa::create([
+            'nama_siswa' => 'tiara', 
+            'NISN' => '2208107010011', 
+            'tanggal_lahir' => '2004-02-08', 
+            'jenis_kelamin' => 'perempuan'
+        ]);
+
+        event(new SiswaCreated($siswa1));
+        event(new SiswaCreated($siswa2));
+        event(new SiswaCreated($siswa3));
+        event(new SiswaCreated($siswa4));
+        event(new SiswaCreated($siswa5));
     }
 }

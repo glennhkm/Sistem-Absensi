@@ -16,13 +16,13 @@
     <tbody class=" text-[20px] bg-[#C6E9DC]"> --}}
         @foreach($result as $data)
             <tr class=" h-[5vh]">
-                <td class=" border border-black"> {{$loop->iteration}} </td>
-                <td class=" border border-black"> {{ucwords($data['nama_siswa'])}} </td>
-                <td class=" border border-black"> {{ $data['hadir']}} </td>
-                <td class=" border border-black"> {{ $data['sakit'] }} </td>
-                <td class=" border border-black"> {{ $data['izin']}} </td>
-                <td class=" border border-black"> {{ $data['alpa'] }} </td>
-                <td class=" border border-black"></td>
+                <td class=" border border-black" id="isiTable"> {{$loop->iteration}} </td>
+                <td class=" border border-black" id="isiTable"> {{ucwords($data['nama_siswa'])}} </td>
+                <td class=" border border-black" id="isiTable"> {{ $data['hadir']}} </td>
+                <td class=" border border-black" id="isiTable"> {{ $data['sakit'] }} </td>
+                <td class=" border border-black" id="isiTable"> {{ $data['izin']}} </td>
+                <td class=" border border-black" id="isiTable"> {{ $data['alpa'] }} </td>
+                <td class=" border border-black" id="isiTable"></td>
             </tr>
         @endforeach
         @for ($i = count($result); $i < 20; $i++)
